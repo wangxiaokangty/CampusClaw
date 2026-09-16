@@ -16,6 +16,8 @@ docker compose up -d --build
 
 本地开发、专用测试库、备份迁移及回退步骤见 [PostgreSQL 运行与迁移](docs/postgresql-migration.md)。
 
+前端发布与后端连接步骤见 [Vercel 部署](docs/vercel-deployment.md)。
+
 ## 目录结构
 
 ```
