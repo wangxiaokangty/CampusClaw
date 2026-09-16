@@ -1,13 +1,29 @@
 services:
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-campusclaw}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?请设置 POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB:-campusclaw}
+      POSTGRES_INITDB_ARGS: --encoding=UTF8 --locale=C
+    volumes:
+      - campusclaw-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$$POSTGRES_USER\" -d \"$$POSTGRES_DB\""]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+    restart: unless-stopped
+
   backend:
     build: ./backend
     environment:
       # 部署时必须覆盖：开发默认密钥不适用于生产
       CAMPUSCLAW_JWT_SECRET: ${CAMPUSCLAW_JWT_SECRET:-change-me-in-deployment}
-      CAMPUSCLAW_DATABASE_PATH: /data/campusclaw.db
-    volumes:
-      # SQLite 单文件挂 named volume，容器重建后数据留存（design.md D10）
-      - campusclaw-data:/data
+      CAMPUSCLAW_DATABASE_URL: ${CAMPUSCLAW_DATABASE_URL:?请设置 CAMPUSCLAW_DATABASE_URL}
+    depends_on:
+      db:
+        condition: service_healthy
     healthcheck:
       test: ["CMD", "python", "-c", "import urllib.request;urllib.request.urlopen('http://127.0.0.1:8000/health')"]
       interval: 5s
@@ -30,4 +46,4 @@ services:
     restart: unless-stopped
 
 volumes:
-  campusclaw-data:
+  campusclaw-postgres:

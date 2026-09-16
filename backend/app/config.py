@@ -1,17 +1,37 @@
 """应用配置。所有可调参数集中于此，通过环境变量覆盖。"""
 
-from pathlib import Path
-
+from pydantic import Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
+from sqlalchemy.engine import make_url
 
-BACKEND_ROOT = Path(__file__).resolve().parent.parent
+
+def normalize_database_url(value: str) -> str:
+    """只允许同步 PostgreSQL 驱动；错误信息不包含输入和凭据。"""
+    try:
+        url = make_url(value)
+        valid = (
+            url.drivername in {"postgresql", "postgresql+psycopg"}
+            and url.host and url.database and url.username
+        )
+        if valid:
+            return url.set(drivername="postgresql+psycopg").render_as_string(hide_password=False)
+    except Exception:
+        pass
+    raise ValueError("请设置有效的 CAMPUSCLAW_DATABASE_URL（PostgreSQL 连接地址）")
 
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_prefix="CAMPUSCLAW_", env_file=".env", extra="ignore")
+    model_config = SettingsConfigDict(
+        env_prefix="CAMPUSCLAW_", env_file=".env", extra="ignore", hide_input_in_errors=True,
+    )
 
     # 数据库
-    database_path: Path = BACKEND_ROOT / "data" / "campusclaw.db"
+    database_url: str = Field(default="", repr=False)
+
+    @field_validator("database_url")
+    @classmethod
+    def validate_database_url(cls, value: str) -> str:
+        return normalize_database_url(value)
 
     # JWT
     jwt_secret: str = "dev-only-insecure-secret-please-override-in-deployment"
@@ -37,10 +57,6 @@ class Settings(BaseSettings):
     # 审计
     audit_params_max_length: int = 48
     """审计参数摘要的截断长度，避免留存学生原文。"""
-
-    @property
-    def database_url(self) -> str:
-        return f"sqlite:///{self.database_path}"
 
 
 settings = Settings()

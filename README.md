@@ -2,6 +2,20 @@
 
 使用 [OpenSpec](https://github.com/Fission-AI/OpenSpec) 的 spec-driven 工作流管理的项目。
 
+## 启动与数据库
+
+前端使用 Next.js，后端使用 FastAPI + SQLModel，运行数据库为 PostgreSQL。
+
+复制 `.env.example` 为 `.env`，填写数据库连接、密码及应用密钥，然后运行：
+
+```sh
+docker compose up -d --build
+```
+
+访问 `http://localhost:3000`。已有 SQLite 数据需先迁移，再启动新后端。
+
+本地开发、专用测试库、备份迁移及回退步骤见 [PostgreSQL 运行与迁移](docs/postgresql-migration.md)。
+
 ## 目录结构
 
 ```

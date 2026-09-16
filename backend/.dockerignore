@@ -4,5 +4,6 @@ __pycache__/
 .pytest_cache/
 data/
 tests/
-scripts/
+scripts/*
+!scripts/migrate_sqlite_to_postgresql.py
 .env

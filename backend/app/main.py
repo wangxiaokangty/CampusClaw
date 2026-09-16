@@ -5,10 +5,10 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from sqlmodel import Session
+from sqlalchemy.exc import SQLAlchemyError
 
 from app.config import settings
-from app.db import create_db_and_tables, engine
+from app.db import create_db_and_tables, new_session
 from app.routers import (
     analytics,
     assistants,
@@ -26,12 +26,15 @@ from app.services.grading import requeue_stale
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    create_db_and_tables()
-    with Session(engine) as session:
-        counts = seed_if_empty(session)
+    try:
+        create_db_and_tables()
+        with new_session() as session:
+            counts = seed_if_empty(session)
+    except SQLAlchemyError:
+        raise RuntimeError("PostgreSQL 初始化失败，请检查数据库连接、权限及表结构") from None
     if counts:
         print(f"[seed] 已写入种子数据: {counts}")
-    with Session(engine) as session:
+    with new_session() as session:
         requeued = requeue_stale(session)
     if requeued:
         print(f"[grading] 重新入队滞留的批改: {requeued}")

@@ -7,10 +7,14 @@
 """
 
 import json
+import os
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+# 契约导出只导入模型，不启动 lifespan，也不访问真实数据库。
+os.environ["CAMPUSCLAW_DATABASE_URL"] = "postgresql+psycopg://openapi@127.0.0.1/openapi"
 
 from app.main import app  # noqa: E402
 

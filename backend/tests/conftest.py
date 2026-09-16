@@ -4,11 +4,21 @@
 以便断言跨班隔离与角色权限时有真实数据可越界尝试。
 """
 
-import app.models  # noqa: F401  触发模型注册
+import os
+from uuid import uuid4
+
 import pytest
+
+# 必须显式提供专用测试库；绝不复用应用的数据库地址执行清理。
+TEST_DATABASE_URL = os.environ.get("CAMPUSCLAW_TEST_DATABASE_URL")
+if not TEST_DATABASE_URL:
+    raise pytest.UsageError("请设置专用 CAMPUSCLAW_TEST_DATABASE_URL（PostgreSQL 测试库）")
+os.environ["CAMPUSCLAW_DATABASE_URL"] = TEST_DATABASE_URL
+
+import app.models  # noqa: F401  触发模型注册
 from app.db import get_session
 from app.main import app as fastapi_app
-from app.config import settings
+from app.config import normalize_database_url, settings
 from app.seed import seed
 
 # 测试中取消流式节奏延时，行为契约与节奏无关
@@ -16,38 +26,42 @@ settings.chat_trace_interval = 0.0
 settings.chat_delta_interval = 0.0
 settings.grading_delay_seconds = 0.0
 from fastapi.testclient import TestClient
-from sqlalchemy import event
-from sqlalchemy.pool import StaticPool
+from sqlalchemy.schema import CreateSchema, DropSchema
 from sqlmodel import Session, SQLModel, create_engine
 
 
+@pytest.fixture(name="empty_engine")
+def empty_engine_fixture():
+    url = normalize_database_url(TEST_DATABASE_URL)
+    schema = "test_" + uuid4().hex
+    admin = create_engine(url, hide_parameters=True)
+    engine = None
+    try:
+        with admin.begin() as connection:
+            connection.execute(CreateSchema(schema))
+        engine = create_engine(
+            url, hide_parameters=True,
+            connect_args={"options": f"-csearch_path={schema}", "connect_timeout": 10},
+        )
+        yield engine
+    finally:
+        if engine is not None:
+            engine.dispose()
+        with admin.begin() as connection:
+            connection.execute(DropSchema(schema, cascade=True, if_exists=True))
+        admin.dispose()
+
+
 @pytest.fixture(name="engine")
-def engine_fixture():
-    engine = create_engine(
-        "sqlite://",
-        connect_args={"check_same_thread": False},
-        poolclass=StaticPool,
-    )
-
-    @event.listens_for(engine, "connect")
-    def _fk_on(dbapi_connection, _record):
-        cur = dbapi_connection.cursor()
-        cur.execute("PRAGMA foreign_keys=ON")
-        cur.close()
-
-    SQLModel.metadata.create_all(engine)
-    with Session(engine) as session:
+def engine_fixture(empty_engine, monkeypatch):
+    SQLModel.metadata.create_all(empty_engine)
+    with Session(empty_engine) as session:
         seed(session)
 
-    # 后台任务（异步批改）经 app.db.new_session() 取会话，
-    # 它在调用时读取模块级 engine——这里整体替换成测试 engine。
+    # lifespan、请求和后台任务必须访问同一隔离 schema。
     import app.db as db_module
-
-    original = db_module.engine
-    db_module.engine = engine
-    yield engine
-    db_module.engine = original
-    engine.dispose()
+    monkeypatch.setattr(db_module, "engine", empty_engine)
+    yield empty_engine
 
 
 @pytest.fixture(name="session")
@@ -63,10 +77,12 @@ def client_fixture(engine):
             yield session
 
     fastapi_app.dependency_overrides[get_session] = override_get_session
-    # 用 app 对象而非上下文管理器，跳过 lifespan（种子已由 engine 夹具装载）
-    with TestClient(fastapi_app) as client:
-        yield client
-    fastapi_app.dependency_overrides.clear()
+    # 运行真实 lifespan，验证初始化幂等；异常时也清理依赖覆盖。
+    try:
+        with TestClient(fastapi_app) as client:
+            yield client
+    finally:
+        fastapi_app.dependency_overrides.clear()
 
 
 def _token(client: TestClient, user_id: str) -> str:

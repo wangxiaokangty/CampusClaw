@@ -9,7 +9,8 @@ JSON 列的取舍见 design.md D9：有独立端点或查询需求的结构建�
 
 from datetime import datetime
 
-from sqlalchemy import JSON, Column
+from sqlalchemy import JSON, Column, DateTime, Enum
+from sqlalchemy.types import TypeDecorator
 from sqlmodel import Field, Relationship, SQLModel
 
 from app.models.enums import (
@@ -26,6 +27,16 @@ def utcnow() -> datetime:
     return datetime.now()
 
 
+class WallClockDateTime(TypeDecorator):
+    """保留原 SQLite 的截止时间语义：去掉时区，不换算钟面时间。"""
+
+    impl = DateTime
+    cache_ok = True
+
+    def process_bind_param(self, value, dialect):
+        return value.replace(tzinfo=None) if value is not None else None
+
+
 class Class(SQLModel, table=True):
     __tablename__ = "class"
 
@@ -40,7 +51,7 @@ class User(SQLModel, table=True):
 
     id: str = Field(primary_key=True)
     name: str
-    role: Role
+    role: Role = Field(sa_type=Enum(Role, native_enum=False))
     class_id: str = Field(foreign_key="class.id", index=True)
     avatar: str = ""
 
@@ -127,7 +138,7 @@ class McpServer(SQLModel, table=True):
     assistant_id: str = Field(foreign_key="assistant.id", index=True, ondelete="CASCADE")
     name: str
     url: str
-    status: McpStatus = McpStatus.CONNECTED
+    status: McpStatus = Field(default=McpStatus.CONNECTED, sa_type=Enum(McpStatus, native_enum=False))
     tools: list[str] = Field(default_factory=list, sa_column=Column(JSON))
     builtin: bool = False
     """内置的知识库检索服务器不可删除。"""
@@ -143,8 +154,8 @@ class Homework(SQLModel, table=True):
     subject: str = Field(index=True)
     title: str
     description: str = ""
-    state: HomeworkState = HomeworkState.PUBLISHED
-    due_at: datetime | None = None
+    state: HomeworkState = Field(default=HomeworkState.PUBLISHED, sa_type=Enum(HomeworkState, native_enum=False))
+    due_at: datetime | None = Field(default=None, sa_type=WallClockDateTime())
 
     submissions: list["Submission"] = Relationship(
         back_populates="homework",
@@ -160,7 +171,7 @@ class Submission(SQLModel, table=True):
     student_id: str = Field(foreign_key="user.id", index=True)
     content: str
     submitted_at: datetime = Field(default_factory=utcnow)
-    state: SubmissionState = SubmissionState.SUBMITTED
+    state: SubmissionState = Field(default=SubmissionState.SUBMITTED, sa_type=Enum(SubmissionState, native_enum=False))
 
     ai_score: int | None = None
     ai_comment: str | None = None
@@ -216,7 +227,7 @@ class Message(SQLModel, table=True):
     conversation_id: str = Field(
         foreign_key="conversation.id", index=True, ondelete="CASCADE"
     )
-    role: MessageRole
+    role: MessageRole = Field(sa_type=Enum(MessageRole, native_enum=False))
     content: str = ""
     skill_key: str | None = None
     sources: list[dict] = Field(default_factory=list, sa_column=Column(JSON))
@@ -240,7 +251,7 @@ class AuditLog(SQLModel, table=True):
     action: str
     params: str = ""
     """截断后的参数摘要，不含学生完整原文。"""
-    status: AuditStatus = AuditStatus.OK
+    status: AuditStatus = Field(default=AuditStatus.OK, sa_type=Enum(AuditStatus, native_enum=False))
     cost_ms: int = 0
     tokens: int = 0
 
@@ -250,7 +261,7 @@ class CareMessage(SQLModel, table=True):
 
     id: str = Field(primary_key=True)
     user_id: str = Field(foreign_key="user.id", index=True)
-    role: MessageRole
+    role: MessageRole = Field(sa_type=Enum(MessageRole, native_enum=False))
     content: str
     emotion: str | None = None
     """仅本人可读。MUST NOT 出现在任何面向教师的响应中。"""
