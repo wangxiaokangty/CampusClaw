@@ -141,6 +141,50 @@ def test_polling_before_grading_shows_pending_state(client, student_a2, session)
     assert polled["ai_comment"] is None
 
 
+def test_grading_state_is_observable_while_task_runs(client, student_a2, session):
+    """模拟耗时必须落在「批改中」之内。
+
+    否则延时全部停留在「已提交」，客户端轮询永远看不到中间态——
+    状态机对调用方就成了不可见的实现细节。
+    """
+    import asyncio
+
+    from app.config import settings
+    from app.db import new_session
+    from app.services.grading import grade_submission_task
+
+    hw = first_math_hw(client, student_a2)
+    sub = client.post(f"/api/homeworks/{hw['id']}/submissions", headers=student_a2,
+                      json={"content": "用十字相乘得 x=2 或 x=3"}).json()
+
+    # 夹具里的批改零延时，POST 返回时已批改完；置回「已提交」重跑一次带延时的任务
+    row = session.get(Submission, sub["id"])
+    row.state = SubmissionState.SUBMITTED
+    row.ai_score = None
+    row.ai_comment = None
+    session.add(row)
+    session.commit()
+
+    original = settings.grading_delay_seconds
+    settings.grading_delay_seconds = 0.3
+    try:
+        async def run() -> str:
+            task = asyncio.create_task(grade_submission_task(sub["id"]))
+            await asyncio.sleep(0.1)
+            with new_session() as s:
+                mid = s.get(Submission, sub["id"]).state
+            await task
+            return mid
+
+        mid_state = asyncio.run(run())
+    finally:
+        settings.grading_delay_seconds = original
+
+    assert mid_state is SubmissionState.GRADING
+    session.expire_all()
+    assert session.get(Submission, sub["id"]).state is SubmissionState.GRADED
+
+
 # --- 滞留任务重入队 ---------------------------------------------------------
 
 def test_stale_grading_submissions_are_requeued(client, student_a2, session):

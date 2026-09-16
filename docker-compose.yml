@@ -1,0 +1,33 @@
+services:
+  backend:
+    build: ./backend
+    environment:
+      # 部署时必须覆盖：开发默认密钥不适用于生产
+      CAMPUSCLAW_JWT_SECRET: ${CAMPUSCLAW_JWT_SECRET:-change-me-in-deployment}
+      CAMPUSCLAW_DATABASE_PATH: /data/campusclaw.db
+    volumes:
+      # SQLite 单文件挂 named volume，容器重建后数据留存（design.md D10）
+      - campusclaw-data:/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request;urllib.request.urlopen('http://127.0.0.1:8000/health')"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        # 浏览器只访问前端同源的 /api，由 Next.js rewrites 反代到后端服务名。
+        # rewrites 固化在构建产物里，因此这里是 build arg 而非运行期环境变量。
+        API_PROXY_TARGET: http://backend:8000
+    ports:
+      - "3000:3000"
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  campusclaw-data:

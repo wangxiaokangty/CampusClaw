@@ -76,6 +76,10 @@ def seed(session: Session) -> dict[str, int]:
         "users",
     )
 
+    # 演示 bundle 里 uploader 存的是用户标识；模型中它是展示用的姓名
+    # （上传接口写入的也是姓名），在此处统一，避免界面上出现裸 id
+    user_names = {u["id"]: u["name"] for u in raw["users"]}
+
     add(
         [
             Lecture(
@@ -83,7 +87,7 @@ def seed(session: Session) -> dict[str, int]:
                 class_id=lec["classId"],
                 subject=lec["subject"],
                 title=lec["title"],
-                uploader=lec.get("uploader", ""),
+                uploader=user_names.get(lec.get("uploader", ""), lec.get("uploader", "")),
                 uploaded_at=_dt(lec.get("uploadedAt")) or datetime.now(),
             )
             for lec in raw["lectures"]

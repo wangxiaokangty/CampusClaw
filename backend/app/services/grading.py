@@ -102,8 +102,26 @@ def grade_submission(submission_id: str, session: Session) -> None:
     session.commit()
 
 
+def mark_grading(submission_id: str, session: Session) -> bool:
+    """把提交推进到「批改中」。已是终态或不存在则返回 False。"""
+    submission = session.get(Submission, submission_id)
+    if submission is None or submission.state is SubmissionState.GRADED:
+        return False
+    submission.state = SubmissionState.GRADING
+    session.add(submission)
+    session.commit()
+    return True
+
+
 async def grade_submission_task(submission_id: str) -> None:
-    """后台任务入口。用独立 session，避免与请求 session 生命周期耦合。"""
+    """后台任务入口。用独立 session，避免与请求 session 生命周期耦合。
+
+    先落「批改中」再模拟耗时——否则模拟延迟全部落在「已提交」上，
+    客户端轮询永远观察不到中间态，状态机对调用方就是不可见的。
+    """
+    with new_session() as session:
+        if not mark_grading(submission_id, session):
+            return
     if settings.grading_delay_seconds > 0:
         await asyncio.sleep(settings.grading_delay_seconds)
     with new_session() as session:

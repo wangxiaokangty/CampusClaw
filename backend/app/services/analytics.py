@@ -133,13 +133,12 @@ def class_analytics(scope: ClassScope) -> ClassAnalytics:
     ]
     ids = [u.id for u in students] or [scope.user.id]
 
-    topics = [
-        TopicScore(
-            label=subject,
-            value=round(sum(topic_baseline(sid, subject) for sid in ids) / len(ids)),
-        )
+    # 综合分由未取整的学科均值算出，再整体取整——先逐科取整会把误差累积进综合分
+    subject_means = {
+        subject: sum(topic_baseline(sid, subject) for sid in ids) / len(ids)
         for subject in subjects
-    ]
+    }
+    topics = [TopicScore(label=s, value=round(subject_means[s])) for s in subjects]
 
     skill_calls = scope.session.exec(
         select(func.count())
@@ -149,7 +148,9 @@ def class_analytics(scope: ClassScope) -> ClassAnalytics:
 
     return ClassAnalytics(
         topics=topics,
-        overall=round(sum(t.value for t in topics) / len(topics)) if topics else 0,
+        overall=(
+            round(sum(subject_means.values()) / len(subject_means)) if subject_means else 0
+        ),
         activity=list(CLASS_ACTIVITY),
         student_count=max(1, len(students)),
         skill_calls=skill_calls,

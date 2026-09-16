@@ -24,12 +24,24 @@ from app.models import (
     Message,
     MessageRole,
 )
-from app.schemas.chat import ConversationCreate, ConversationRead, MessageCreate, MessageRead
+from app.schemas.chat import (
+    ChatStreamEvent,
+    ConversationCreate,
+    ConversationRead,
+    MessageCreate,
+    MessageRead,
+)
 from app.schemas.common import SourceRef, TraceStep
 from app.services import audit
 from app.services.kb import load_chunks
 
 router = APIRouter(tags=["chat"])
+
+
+class SSEResponse(StreamingResponse):
+    """仅用于让 OpenAPI 把事件载荷挂在 text/event-stream 下。"""
+
+    media_type = "text/event-stream"
 
 
 def _message_read(m: Message) -> MessageRead:
@@ -130,15 +142,23 @@ def _sse(event: str, data: dict) -> str:
         "以 text/event-stream 响应，事件依次为：\n"
         "- `trace` —— 执行过程步骤 `{icon, label, detail}`\n"
         "- `delta` —— 回答文本增量 `{text}`\n"
-        "- `done` —— 结束 `{message_id, skill_key, sources, tokens, cost_ms}`\n\n"
+        "- `done` —— 结束 `{message_id, skill_key, sources, tokens, cost_ms}`\n"
+        "- `error` —— 生成失败 `{detail}`，流就此终止\n\n"
+        "每个事件的 `data` 载荷形状见 `ChatStreamEvent`；"
         "客户端中途断开不会留下半条损坏的消息。"
     ),
-    responses={200: {"content": {"text/event-stream": {}}}},
+    response_class=SSEResponse,
+    responses={
+        200: {
+            "model": ChatStreamEvent,
+            "description": "SSE 事件流。每个事件的 `data` 为下列载荷之一。",
+        }
+    },
     response_model=None,
 )
 async def send_message(
     scope: Scope, conversation_id: str, payload: MessageCreate, request: Request
-) -> StreamingResponse:
+) -> SSEResponse:
     conversation = _require_own_conversation(scope, conversation_id)
     assistant = scope.require(Assistant, conversation.assistant_id, "助手")
 
@@ -236,7 +256,7 @@ async def send_message(
             },
         )
 
-    return StreamingResponse(
+    return SSEResponse(
         stream(),
         media_type="text/event-stream",
         headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
