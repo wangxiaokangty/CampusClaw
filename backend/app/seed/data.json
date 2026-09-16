@@ -1,0 +1,1376 @@
+{
+  "classes": [
+    {
+      "id": "cls-a",
+      "name": "高一（3）班"
+    },
+    {
+      "id": "cls-b",
+      "name": "高一（5）班"
+    }
+  ],
+  "users": [
+    {
+      "id": "u-stu-a1",
+      "name": "李明（A1）",
+      "role": "student",
+      "classId": "cls-a",
+      "avatar": "🧑‍🎓"
+    },
+    {
+      "id": "u-stu-a2",
+      "name": "陈晨（A2）",
+      "role": "student",
+      "classId": "cls-a",
+      "avatar": "🧑‍🦱"
+    },
+    {
+      "id": "u-stu-b1",
+      "name": "王芳（B1）",
+      "role": "student",
+      "classId": "cls-b",
+      "avatar": "👧"
+    },
+    {
+      "id": "u-teacher-a",
+      "name": "张老师",
+      "role": "teacher",
+      "classId": "cls-a",
+      "avatar": "👩‍🏫"
+    }
+  ],
+  "lectures": [
+    {
+      "id": "lec-a-chemistry-1",
+      "classId": "cls-a",
+      "subject": "化学",
+      "title": "物质的量",
+      "uploader": "u-teacher-a",
+      "sizeKB": 720,
+      "uploadedAt": "2026-09-06 09:10",
+      "chunkCount": 2
+    },
+    {
+      "id": "lec-a-chemistry-2",
+      "classId": "cls-a",
+      "subject": "化学",
+      "title": "化学方程式配平",
+      "uploader": "u-teacher-a",
+      "sizeKB": 900,
+      "uploadedAt": "2026-09-06 09:11",
+      "chunkCount": 2
+    },
+    {
+      "id": "lec-a-chinese-1",
+      "classId": "cls-a",
+      "subject": "语文",
+      "title": "文言文实词与虚词",
+      "uploader": "u-teacher-a",
+      "sizeKB": 600,
+      "uploadedAt": "2026-09-03 09:10",
+      "chunkCount": 2
+    },
+    {
+      "id": "lec-a-chinese-2",
+      "classId": "cls-a",
+      "subject": "语文",
+      "title": "记叙文阅读方法",
+      "uploader": "u-teacher-a",
+      "sizeKB": 780,
+      "uploadedAt": "2026-09-03 09:11",
+      "chunkCount": 2
+    },
+    {
+      "id": "lec-a-english-1",
+      "classId": "cls-a",
+      "subject": "英语",
+      "title": "时态与语态",
+      "uploader": "u-teacher-a",
+      "sizeKB": 640,
+      "uploadedAt": "2026-09-04 09:10",
+      "chunkCount": 2
+    },
+    {
+      "id": "lec-a-english-2",
+      "classId": "cls-a",
+      "subject": "英语",
+      "title": "阅读理解技巧",
+      "uploader": "u-teacher-a",
+      "sizeKB": 820,
+      "uploadedAt": "2026-09-04 09:11",
+      "chunkCount": 2
+    },
+    {
+      "id": "lec-a-math-1",
+      "classId": "cls-a",
+      "subject": "数学",
+      "title": "一元二次方程与求根公式",
+      "uploader": "u-teacher-a",
+      "sizeKB": 560,
+      "uploadedAt": "2026-09-02 09:10",
+      "chunkCount": 3
+    },
+    {
+      "id": "lec-a-math-2",
+      "classId": "cls-a",
+      "subject": "数学",
+      "title": "函数的单调性",
+      "uploader": "u-teacher-a",
+      "sizeKB": 740,
+      "uploadedAt": "2026-09-02 09:11",
+      "chunkCount": 2
+    },
+    {
+      "id": "lec-a-physics-1",
+      "classId": "cls-a",
+      "subject": "物理",
+      "title": "匀变速直线运动",
+      "uploader": "u-teacher-a",
+      "sizeKB": 680,
+      "uploadedAt": "2026-09-05 09:10",
+      "chunkCount": 2
+    },
+    {
+      "id": "lec-a-physics-2",
+      "classId": "cls-a",
+      "subject": "物理",
+      "title": "牛顿运动定律",
+      "uploader": "u-teacher-a",
+      "sizeKB": 860,
+      "uploadedAt": "2026-09-05 09:11",
+      "chunkCount": 2
+    },
+    {
+      "id": "lec-b-english-1",
+      "classId": "cls-b",
+      "subject": "英语",
+      "title": "时态与语态",
+      "uploader": "u-teacher-a",
+      "sizeKB": 600,
+      "uploadedAt": "2026-09-03 09:10",
+      "chunkCount": 2
+    },
+    {
+      "id": "lec-b-english-2",
+      "classId": "cls-b",
+      "subject": "英语",
+      "title": "阅读理解技巧",
+      "uploader": "u-teacher-a",
+      "sizeKB": 780,
+      "uploadedAt": "2026-09-03 09:11",
+      "chunkCount": 2
+    },
+    {
+      "id": "lec-b-history-1",
+      "classId": "cls-b",
+      "subject": "历史",
+      "title": "中国古代史纲要",
+      "uploader": "u-teacher-a",
+      "sizeKB": 640,
+      "uploadedAt": "2026-09-04 09:10",
+      "chunkCount": 2
+    },
+    {
+      "id": "lec-b-math-1",
+      "classId": "cls-b",
+      "subject": "数学",
+      "title": "集合与常用逻辑用语",
+      "uploader": "u-teacher-a",
+      "sizeKB": 560,
+      "uploadedAt": "2026-09-02 09:10",
+      "chunkCount": 2
+    }
+  ],
+  "kbChunks": [
+    {
+      "id": "kb-a-chemistry-1-1",
+      "classId": "cls-a",
+      "subject": "化学",
+      "lectureId": "lec-a-chemistry-1",
+      "lectureTitle": "物质的量",
+      "location": "摩尔与阿伏伽德罗常数",
+      "keywords": [
+        "物质的量",
+        "摩尔",
+        "阿伏伽德罗常数"
+      ],
+      "text": "物质的量单位为摩尔(mol)，1 mol 任何粒子含约 6.02×10²³ 个粒子（阿伏伽德罗常数 Nₐ）。"
+    },
+    {
+      "id": "kb-a-chemistry-1-2",
+      "classId": "cls-a",
+      "subject": "化学",
+      "lectureId": "lec-a-chemistry-1",
+      "lectureTitle": "物质的量",
+      "location": "n=m/M",
+      "keywords": [
+        "摩尔质量",
+        "n=m/M",
+        "计算"
+      ],
+      "text": "物质的量 n=m/M，m 为质量(g)，M 为摩尔质量(g/mol)，数值上等于相对分子或原子质量。"
+    },
+    {
+      "id": "kb-a-chemistry-2-1",
+      "classId": "cls-a",
+      "subject": "化学",
+      "lectureId": "lec-a-chemistry-2",
+      "lectureTitle": "化学方程式配平",
+      "location": "质量守恒",
+      "keywords": [
+        "质量守恒",
+        "配平",
+        "原子守恒"
+      ],
+      "text": "配平依据质量守恒——反应前后各元素的原子个数相等。"
+    },
+    {
+      "id": "kb-a-chemistry-2-2",
+      "classId": "cls-a",
+      "subject": "化学",
+      "lectureId": "lec-a-chemistry-2",
+      "lectureTitle": "化学方程式配平",
+      "location": "配平方法",
+      "keywords": [
+        "配平",
+        "最小公倍数",
+        "观察法"
+      ],
+      "text": "常用观察法与最小公倍数法：先配变化大的元素，再逐步调整系数使两边原子数相等。"
+    },
+    {
+      "id": "kb-a-chinese-1-1",
+      "classId": "cls-a",
+      "subject": "语文",
+      "lectureId": "lec-a-chinese-1",
+      "lectureTitle": "文言文实词与虚词",
+      "location": "一、词类活用",
+      "keywords": [
+        "文言文",
+        "词类活用",
+        "实词"
+      ],
+      "text": "词类活用指某类词临时用作他类，如名词作动词、使动、意动。例：“衣锦还乡”的“衣”名词作动词，意为“穿”。"
+    },
+    {
+      "id": "kb-a-chinese-1-2",
+      "classId": "cls-a",
+      "subject": "语文",
+      "lectureId": "lec-a-chinese-1",
+      "lectureTitle": "文言文实词与虚词",
+      "location": "二、虚词“之”",
+      "keywords": [
+        "虚词",
+        "之",
+        "文言文"
+      ],
+      "text": "虚词“之”常见用法：作代词（代人或事）、作助词“的”、用于主谓之间取消句子独立性、作宾语前置的标志。"
+    },
+    {
+      "id": "kb-a-chinese-2-1",
+      "classId": "cls-a",
+      "subject": "语文",
+      "lectureId": "lec-a-chinese-2",
+      "lectureTitle": "记叙文阅读方法",
+      "location": "概括主旨",
+      "keywords": [
+        "记叙文",
+        "主旨",
+        "概括"
+      ],
+      "text": "概括主旨可抓“人物＋事件＋情感或道理”，关注开头结尾与反复出现的意象。"
+    },
+    {
+      "id": "kb-a-chinese-2-2",
+      "classId": "cls-a",
+      "subject": "语文",
+      "lectureId": "lec-a-chinese-2",
+      "lectureTitle": "记叙文阅读方法",
+      "location": "赏析语言",
+      "keywords": [
+        "赏析",
+        "修辞",
+        "语言"
+      ],
+      "text": "赏析句子先判断修辞（比喻、拟人、排比），再说表达效果与情感，避免只贴标签。"
+    },
+    {
+      "id": "kb-a-english-1-1",
+      "classId": "cls-a",
+      "subject": "英语",
+      "lectureId": "lec-a-english-1",
+      "lectureTitle": "时态与语态",
+      "location": "一般现在时 / 过去时",
+      "keywords": [
+        "时态",
+        "一般现在时",
+        "一般过去时"
+      ],
+      "text": "一般现在时表经常或事实，第三人称单数动词加 -s/-es；一般过去时表过去动作，规则动词加 -ed。"
+    },
+    {
+      "id": "kb-a-english-1-2",
+      "classId": "cls-a",
+      "subject": "英语",
+      "lectureId": "lec-a-english-1",
+      "lectureTitle": "时态与语态",
+      "location": "被动语态",
+      "keywords": [
+        "语态",
+        "被动语态",
+        "be done"
+      ],
+      "text": "被动语态结构为 be + 过去分词，强调动作的承受者。例：The letter was written by Tom."
+    },
+    {
+      "id": "kb-a-english-2-1",
+      "classId": "cls-a",
+      "subject": "英语",
+      "lectureId": "lec-a-english-2",
+      "lectureTitle": "阅读理解技巧",
+      "location": "主旨大意题",
+      "keywords": [
+        "阅读",
+        "主旨",
+        "main idea"
+      ],
+      "text": "主旨题关注首末段与主题句，避免选择以偏概全的细节选项。"
+    },
+    {
+      "id": "kb-a-english-2-2",
+      "classId": "cls-a",
+      "subject": "英语",
+      "lectureId": "lec-a-english-2",
+      "lectureTitle": "阅读理解技巧",
+      "location": "推理判断题",
+      "keywords": [
+        "阅读",
+        "推理",
+        "inference"
+      ],
+      "text": "推理题需基于原文信息合理延伸，不能主观臆断，注意作者的态度词。"
+    },
+    {
+      "id": "kb-a-math-1-1",
+      "classId": "cls-a",
+      "subject": "数学",
+      "lectureId": "lec-a-math-1",
+      "lectureTitle": "一元二次方程与求根公式",
+      "location": "第 2 页",
+      "keywords": [
+        "一元二次方程",
+        "求根公式",
+        "判别式",
+        "根"
+      ],
+      "text": "对于一元二次方程 ax²+bx+c=0（a≠0），判别式 Δ=b²−4ac。当 Δ>0 时有两个不相等实根，Δ=0 时有两个相等实根，Δ<0 时无实根。"
+    },
+    {
+      "id": "kb-a-math-1-2",
+      "classId": "cls-a",
+      "subject": "数学",
+      "lectureId": "lec-a-math-1",
+      "lectureTitle": "一元二次方程与求根公式",
+      "location": "第 3 页",
+      "keywords": [
+        "求根公式",
+        "配方法",
+        "解方程"
+      ],
+      "text": "求根公式为 x = (−b ± √(b²−4ac)) / (2a)。使用前先判断判别式符号，再代入 a、b、c 计算。"
+    },
+    {
+      "id": "kb-a-math-1-3",
+      "classId": "cls-a",
+      "subject": "数学",
+      "lectureId": "lec-a-math-1",
+      "lectureTitle": "一元二次方程与求根公式",
+      "location": "例题 1",
+      "keywords": [
+        "因式分解",
+        "十字相乘"
+      ],
+      "text": "当方程可因式分解时，优先用十字相乘法：将 x²−5x+6 分解为 (x−2)(x−3)，得 x=2 或 x=3。"
+    },
+    {
+      "id": "kb-a-math-2-1",
+      "classId": "cls-a",
+      "subject": "数学",
+      "lectureId": "lec-a-math-2",
+      "lectureTitle": "函数的单调性",
+      "location": "3.1 节",
+      "keywords": [
+        "单调性",
+        "增函数",
+        "减函数",
+        "定义"
+      ],
+      "text": "若对定义域内任意 x₁<x₂ 都有 f(x₁)<f(x₂)，则 f 在该区间上单调递增；反之单调递减。"
+    },
+    {
+      "id": "kb-a-math-2-2",
+      "classId": "cls-a",
+      "subject": "数学",
+      "lectureId": "lec-a-math-2",
+      "lectureTitle": "函数的单调性",
+      "location": "3.2 节",
+      "keywords": [
+        "判断单调性",
+        "导数",
+        "作差法"
+      ],
+      "text": "判断单调性可用作差法：比较 f(x₁)−f(x₂) 的符号；也可借助导数 f′(x) 的正负。"
+    },
+    {
+      "id": "kb-a-physics-1-1",
+      "classId": "cls-a",
+      "subject": "物理",
+      "lectureId": "lec-a-physics-1",
+      "lectureTitle": "匀变速直线运动",
+      "location": "速度公式",
+      "keywords": [
+        "匀变速",
+        "速度公式",
+        "加速度"
+      ],
+      "text": "匀变速直线运动速度公式 v=v₀+at；a 为加速度，方向与速度变化方向一致。"
+    },
+    {
+      "id": "kb-a-physics-1-2",
+      "classId": "cls-a",
+      "subject": "物理",
+      "lectureId": "lec-a-physics-1",
+      "lectureTitle": "匀变速直线运动",
+      "location": "位移公式",
+      "keywords": [
+        "位移",
+        "匀变速",
+        "公式"
+      ],
+      "text": "位移公式 x=v₀t+½at²，也可用 v²−v₀²=2ax 求解不含时间的问题。"
+    },
+    {
+      "id": "kb-a-physics-2-1",
+      "classId": "cls-a",
+      "subject": "物理",
+      "lectureId": "lec-a-physics-2",
+      "lectureTitle": "牛顿运动定律",
+      "location": "牛顿第二定律",
+      "keywords": [
+        "牛顿第二定律",
+        "F=ma",
+        "合力"
+      ],
+      "text": "物体加速度与所受合外力成正比、与质量成反比：F=ma，方向与合力方向相同。"
+    },
+    {
+      "id": "kb-a-physics-2-2",
+      "classId": "cls-a",
+      "subject": "物理",
+      "lectureId": "lec-a-physics-2",
+      "lectureTitle": "牛顿运动定律",
+      "location": "受力分析",
+      "keywords": [
+        "受力分析",
+        "重力",
+        "支持力",
+        "摩擦力"
+      ],
+      "text": "受力分析先隔离研究对象，依次找重力、支持力、摩擦力、拉力等，再按方向进行合成。"
+    },
+    {
+      "id": "kb-b-english-1-1",
+      "classId": "cls-b",
+      "subject": "英语",
+      "lectureId": "lec-b-english-1",
+      "lectureTitle": "时态与语态",
+      "location": "一般现在时 / 过去时",
+      "keywords": [
+        "时态",
+        "一般现在时",
+        "一般过去时"
+      ],
+      "text": "一般现在时表经常或事实，第三人称单数动词加 -s/-es；一般过去时表过去动作，规则动词加 -ed。"
+    },
+    {
+      "id": "kb-b-english-1-2",
+      "classId": "cls-b",
+      "subject": "英语",
+      "lectureId": "lec-b-english-1",
+      "lectureTitle": "时态与语态",
+      "location": "被动语态",
+      "keywords": [
+        "语态",
+        "被动语态",
+        "be done"
+      ],
+      "text": "被动语态结构为 be + 过去分词，强调动作的承受者。例：The letter was written by Tom."
+    },
+    {
+      "id": "kb-b-english-2-1",
+      "classId": "cls-b",
+      "subject": "英语",
+      "lectureId": "lec-b-english-2",
+      "lectureTitle": "阅读理解技巧",
+      "location": "主旨大意题",
+      "keywords": [
+        "阅读",
+        "主旨",
+        "main idea"
+      ],
+      "text": "主旨题关注首末段与主题句，避免选择以偏概全的细节选项。"
+    },
+    {
+      "id": "kb-b-english-2-2",
+      "classId": "cls-b",
+      "subject": "英语",
+      "lectureId": "lec-b-english-2",
+      "lectureTitle": "阅读理解技巧",
+      "location": "推理判断题",
+      "keywords": [
+        "阅读",
+        "推理",
+        "inference"
+      ],
+      "text": "推理题需基于原文信息合理延伸，不能主观臆断，注意作者的态度词。"
+    },
+    {
+      "id": "kb-b-history-1-1",
+      "classId": "cls-b",
+      "subject": "历史",
+      "lectureId": "lec-b-history-1",
+      "lectureTitle": "中国古代史纲要",
+      "location": "秦朝统一",
+      "keywords": [
+        "秦朝",
+        "统一",
+        "中央集权"
+      ],
+      "text": "公元前 221 年秦统一六国，建立中央集权制度：皇帝制、三公九卿、郡县制，并统一度量衡、文字与货币。"
+    },
+    {
+      "id": "kb-b-history-1-2",
+      "classId": "cls-b",
+      "subject": "历史",
+      "lectureId": "lec-b-history-1",
+      "lectureTitle": "中国古代史纲要",
+      "location": "汉承秦制",
+      "keywords": [
+        "汉朝",
+        "汉承秦制",
+        "郡国并行"
+      ],
+      "text": "汉初实行郡国并行制，后经推恩令削弱诸侯；“汉承秦制”指汉代基本沿袭秦的政治制度并有所调整。"
+    },
+    {
+      "id": "kb-b-math-1-1",
+      "classId": "cls-b",
+      "subject": "数学",
+      "lectureId": "lec-b-math-1",
+      "lectureTitle": "集合与常用逻辑用语",
+      "location": "第 1 页",
+      "keywords": [
+        "集合",
+        "交集",
+        "并集",
+        "补集"
+      ],
+      "text": "集合的基本运算：交集 A∩B、并集 A∪B、补集 ∁U A。注意空集是任何集合的子集。"
+    },
+    {
+      "id": "kb-b-math-1-2",
+      "classId": "cls-b",
+      "subject": "数学",
+      "lectureId": "lec-b-math-1",
+      "lectureTitle": "集合与常用逻辑用语",
+      "location": "第 4 页",
+      "keywords": [
+        "充分条件",
+        "必要条件",
+        "逻辑"
+      ],
+      "text": "若 p⇒q，则 p 是 q 的充分条件，q 是 p 的必要条件；若 p⇔q 则互为充要条件。"
+    }
+  ],
+  "assistants": [
+    {
+      "id": "as-a-chemistry",
+      "classId": "cls-a",
+      "subject": "化学",
+      "icon": "🧪",
+      "name": "化学学习助手",
+      "prompt": "你是高一化学学习助手。讲清概念与守恒思想，鼓励学生先分析再计算，结论尽量给出讲义依据。",
+      "apiKey": "sk-live-achemistrycampusclaw00000000",
+      "boundLectureIds": [
+        "lec-a-chemistry-1",
+        "lec-a-chemistry-2"
+      ],
+      "skills": [
+        {
+          "id": "guide",
+          "name": "解题引导",
+          "when": "学生就题目提问",
+          "behavior": "追问思路、引用知识库，默认不直接给最终答案",
+          "enabled": true,
+          "required": true,
+          "tools": [
+            "知识库检索"
+          ]
+        },
+        {
+          "id": "grade",
+          "name": "作业批改",
+          "when": "学生提交作业后",
+          "behavior": "给出分数、评语与依据，教师可改分",
+          "enabled": true,
+          "required": true,
+          "tools": [
+            "作业读取",
+            "知识库检索"
+          ]
+        },
+        {
+          "id": "mistake",
+          "name": "错题讲解",
+          "when": "学生查看判错的题目",
+          "behavior": "按错因讲解，默认不直接给最终答案",
+          "enabled": true,
+          "required": true,
+          "tools": [
+            "作业读取",
+            "知识库检索"
+          ]
+        }
+      ],
+      "mcpServers": [
+        {
+          "id": "mcp-kb",
+          "name": "知识库检索服务",
+          "url": "mcp://campusclaw/knowledge-base",
+          "status": "connected",
+          "tools": [
+            "kb.search",
+            "kb.getChunk"
+          ],
+          "builtin": true
+        },
+        {
+          "id": "mcp-chem",
+          "name": "化学式与摩尔质量",
+          "url": "mcp://tools/chem",
+          "status": "connected",
+          "tools": [
+            "chem.balance",
+            "chem.molarMass"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "as-a-chinese",
+      "classId": "cls-a",
+      "subject": "语文",
+      "icon": "📖",
+      "name": "语文学习助手",
+      "prompt": "你是高一语文学习助手。重视文本细读与思路引导，鼓励学生自主品读，默认不直接给出范文或标准译文，可引用讲义要点。",
+      "apiKey": "sk-live-achinesecampusclaw0000000000",
+      "boundLectureIds": [
+        "lec-a-chinese-1",
+        "lec-a-chinese-2"
+      ],
+      "skills": [
+        {
+          "id": "guide",
+          "name": "解题引导",
+          "when": "学生就题目提问",
+          "behavior": "追问思路、引用知识库，默认不直接给最终答案",
+          "enabled": true,
+          "required": true,
+          "tools": [
+            "知识库检索"
+          ]
+        },
+        {
+          "id": "grade",
+          "name": "作业批改",
+          "when": "学生提交作业后",
+          "behavior": "给出分数、评语与依据，教师可改分",
+          "enabled": true,
+          "required": true,
+          "tools": [
+            "作业读取",
+            "知识库检索"
+          ]
+        },
+        {
+          "id": "mistake",
+          "name": "错题讲解",
+          "when": "学生查看判错的题目",
+          "behavior": "按错因讲解，默认不直接给最终答案",
+          "enabled": true,
+          "required": true,
+          "tools": [
+            "作业读取",
+            "知识库检索"
+          ]
+        }
+      ],
+      "mcpServers": [
+        {
+          "id": "mcp-kb",
+          "name": "知识库检索服务",
+          "url": "mcp://campusclaw/knowledge-base",
+          "status": "connected",
+          "tools": [
+            "kb.search",
+            "kb.getChunk"
+          ],
+          "builtin": true
+        },
+        {
+          "id": "mcp-poetry",
+          "name": "古诗文检索服务",
+          "url": "mcp://tools/poetry",
+          "status": "connected",
+          "tools": [
+            "poetry.search",
+            "dict.lookup"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "as-a-english",
+      "classId": "cls-a",
+      "subject": "英语",
+      "icon": "🔤",
+      "name": "英语学习助手",
+      "prompt": "你是高一英语学习助手。讲解语法时配以例句，鼓励学生先尝试再纠正，可引用讲义要点，避免直接给出整篇译文。",
+      "apiKey": "sk-live-aenglishcampusclaw0000000000",
+      "boundLectureIds": [
+        "lec-a-english-1",
+        "lec-a-english-2"
+      ],
+      "skills": [
+        {
+          "id": "guide",
+          "name": "解题引导",
+          "when": "学生就题目提问",
+          "behavior": "追问思路、引用知识库，默认不直接给最终答案",
+          "enabled": true,
+          "required": true,
+          "tools": [
+            "知识库检索"
+          ]
+        },
+        {
+          "id": "grade",
+          "name": "作业批改",
+          "when": "学生提交作业后",
+          "behavior": "给出分数、评语与依据，教师可改分",
+          "enabled": true,
+          "required": true,
+          "tools": [
+            "作业读取",
+            "知识库检索"
+          ]
+        },
+        {
+          "id": "mistake",
+          "name": "错题讲解",
+          "when": "学生查看判错的题目",
+          "behavior": "按错因讲解，默认不直接给最终答案",
+          "enabled": true,
+          "required": true,
+          "tools": [
+            "作业读取",
+            "知识库检索"
+          ]
+        }
+      ],
+      "mcpServers": [
+        {
+          "id": "mcp-kb",
+          "name": "知识库检索服务",
+          "url": "mcp://campusclaw/knowledge-base",
+          "status": "connected",
+          "tools": [
+            "kb.search",
+            "kb.getChunk"
+          ],
+          "builtin": true
+        },
+        {
+          "id": "mcp-lexicon",
+          "name": "词典与翻译服务",
+          "url": "mcp://tools/lexicon",
+          "status": "connected",
+          "tools": [
+            "dict.translate",
+            "grammar.check"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "as-a-math",
+      "classId": "cls-a",
+      "subject": "数学",
+      "icon": "🔢",
+      "name": "数学学习助手",
+      "prompt": "你是高一数学学习助手。回答须严谨、循序渐进。若开启解题引导，则先引导学生思考，不直接给出最终答案。所有结论尽量给出知识库来源。",
+      "apiKey": "sk-live-amathcampusclaw0000000000000",
+      "boundLectureIds": [
+        "lec-a-math-1",
+        "lec-a-math-2"
+      ],
+      "skills": [
+        {
+          "id": "guide",
+          "name": "解题引导",
+          "when": "学生就题目提问",
+          "behavior": "追问思路、引用知识库，默认不直接给最终答案",
+          "enabled": true,
+          "required": true,
+          "tools": [
+            "知识库检索"
+          ]
+        },
+        {
+          "id": "grade",
+          "name": "作业批改",
+          "when": "学生提交作业后",
+          "behavior": "给出分数、评语与依据，教师可改分",
+          "enabled": true,
+          "required": true,
+          "tools": [
+            "作业读取",
+            "知识库检索"
+          ]
+        },
+        {
+          "id": "mistake",
+          "name": "错题讲解",
+          "when": "学生查看判错的题目",
+          "behavior": "按错因讲解，默认不直接给最终答案",
+          "enabled": true,
+          "required": true,
+          "tools": [
+            "作业读取",
+            "知识库检索"
+          ]
+        }
+      ],
+      "mcpServers": [
+        {
+          "id": "mcp-kb",
+          "name": "知识库检索服务",
+          "url": "mcp://campusclaw/knowledge-base",
+          "status": "connected",
+          "tools": [
+            "kb.search",
+            "kb.getChunk"
+          ],
+          "builtin": true
+        },
+        {
+          "id": "mcp-math",
+          "name": "数学计算工具",
+          "url": "mcp://tools/math-solver",
+          "status": "connected",
+          "tools": [
+            "math.solveEquation",
+            "math.plotFunction"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "as-a-physics",
+      "classId": "cls-a",
+      "subject": "物理",
+      "icon": "⚛️",
+      "name": "物理学习助手",
+      "prompt": "你是高一物理学习助手。强调物理过程与受力分析，先引导建立模型再代入公式，结论尽量给出讲义依据。",
+      "apiKey": "sk-live-aphysicscampusclaw0000000000",
+      "boundLectureIds": [
+        "lec-a-physics-1",
+        "lec-a-physics-2"
+      ],
+      "skills": [
+        {
+          "id": "guide",
+          "name": "解题引导",
+          "when": "学生就题目提问",
+          "behavior": "追问思路、引用知识库，默认不直接给最终答案",
+          "enabled": true,
+          "required": true,
+          "tools": [
+            "知识库检索"
+          ]
+        },
+        {
+          "id": "grade",
+          "name": "作业批改",
+          "when": "学生提交作业后",
+          "behavior": "给出分数、评语与依据，教师可改分",
+          "enabled": true,
+          "required": true,
+          "tools": [
+            "作业读取",
+            "知识库检索"
+          ]
+        },
+        {
+          "id": "mistake",
+          "name": "错题讲解",
+          "when": "学生查看判错的题目",
+          "behavior": "按错因讲解，默认不直接给最终答案",
+          "enabled": true,
+          "required": true,
+          "tools": [
+            "作业读取",
+            "知识库检索"
+          ]
+        }
+      ],
+      "mcpServers": [
+        {
+          "id": "mcp-kb",
+          "name": "知识库检索服务",
+          "url": "mcp://campusclaw/knowledge-base",
+          "status": "connected",
+          "tools": [
+            "kb.search",
+            "kb.getChunk"
+          ],
+          "builtin": true
+        },
+        {
+          "id": "mcp-physics",
+          "name": "物理计算与单位换算",
+          "url": "mcp://tools/physics",
+          "status": "connected",
+          "tools": [
+            "phys.kinematics",
+            "unit.convert"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "as-b-english",
+      "classId": "cls-b",
+      "subject": "英语",
+      "icon": "🔤",
+      "name": "英语学习助手",
+      "prompt": "你是高一英语学习助手。讲解语法时配以例句，鼓励学生先尝试再纠正，可引用讲义要点，避免直接给出整篇译文。",
+      "apiKey": "sk-live-benglishcampusclaw0000000000",
+      "boundLectureIds": [
+        "lec-b-english-1",
+        "lec-b-english-2"
+      ],
+      "skills": [
+        {
+          "id": "guide",
+          "name": "解题引导",
+          "when": "学生就题目提问",
+          "behavior": "追问思路、引用知识库，默认不直接给最终答案",
+          "enabled": true,
+          "required": true,
+          "tools": [
+            "知识库检索"
+          ]
+        },
+        {
+          "id": "grade",
+          "name": "作业批改",
+          "when": "学生提交作业后",
+          "behavior": "给出分数、评语与依据，教师可改分",
+          "enabled": true,
+          "required": true,
+          "tools": [
+            "作业读取",
+            "知识库检索"
+          ]
+        },
+        {
+          "id": "mistake",
+          "name": "错题讲解",
+          "when": "学生查看判错的题目",
+          "behavior": "按错因讲解，默认不直接给最终答案",
+          "enabled": true,
+          "required": true,
+          "tools": [
+            "作业读取",
+            "知识库检索"
+          ]
+        }
+      ],
+      "mcpServers": [
+        {
+          "id": "mcp-kb",
+          "name": "知识库检索服务",
+          "url": "mcp://campusclaw/knowledge-base",
+          "status": "connected",
+          "tools": [
+            "kb.search",
+            "kb.getChunk"
+          ],
+          "builtin": true
+        },
+        {
+          "id": "mcp-lexicon",
+          "name": "词典与翻译服务",
+          "url": "mcp://tools/lexicon",
+          "status": "connected",
+          "tools": [
+            "dict.translate",
+            "grammar.check"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "as-b-history",
+      "classId": "cls-b",
+      "subject": "历史",
+      "icon": "🏛️",
+      "name": "历史学习助手",
+      "prompt": "你是高一历史学习助手。重视史实与因果分析，引导学生用史料说话，结论尽量给出讲义依据。",
+      "apiKey": "sk-live-bhistorycampusclaw0000000000",
+      "boundLectureIds": [
+        "lec-b-history-1"
+      ],
+      "skills": [
+        {
+          "id": "guide",
+          "name": "解题引导",
+          "when": "学生就题目提问",
+          "behavior": "追问思路、引用知识库，默认不直接给最终答案",
+          "enabled": true,
+          "required": true,
+          "tools": [
+            "知识库检索"
+          ]
+        },
+        {
+          "id": "grade",
+          "name": "作业批改",
+          "when": "学生提交作业后",
+          "behavior": "给出分数、评语与依据，教师可改分",
+          "enabled": true,
+          "required": true,
+          "tools": [
+            "作业读取",
+            "知识库检索"
+          ]
+        },
+        {
+          "id": "mistake",
+          "name": "错题讲解",
+          "when": "学生查看判错的题目",
+          "behavior": "按错因讲解，默认不直接给最终答案",
+          "enabled": true,
+          "required": true,
+          "tools": [
+            "作业读取",
+            "知识库检索"
+          ]
+        }
+      ],
+      "mcpServers": [
+        {
+          "id": "mcp-kb",
+          "name": "知识库检索服务",
+          "url": "mcp://campusclaw/knowledge-base",
+          "status": "connected",
+          "tools": [
+            "kb.search",
+            "kb.getChunk"
+          ],
+          "builtin": true
+        },
+        {
+          "id": "mcp-history",
+          "name": "史料检索服务",
+          "url": "mcp://tools/history",
+          "status": "connected",
+          "tools": [
+            "history.search",
+            "timeline.lookup"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "as-b-math",
+      "classId": "cls-b",
+      "subject": "数学",
+      "icon": "🔢",
+      "name": "数学学习助手",
+      "prompt": "你是高一数学学习助手，面向本班集合与逻辑单元，风格严谨、循序渐进，结论尽量给出讲义来源。",
+      "apiKey": "sk-live-bmathcampusclaw0000000000000",
+      "boundLectureIds": [
+        "lec-b-math-1"
+      ],
+      "skills": [
+        {
+          "id": "guide",
+          "name": "解题引导",
+          "when": "学生就题目提问",
+          "behavior": "追问思路、引用知识库，默认不直接给最终答案",
+          "enabled": true,
+          "required": true,
+          "tools": [
+            "知识库检索"
+          ]
+        },
+        {
+          "id": "grade",
+          "name": "作业批改",
+          "when": "学生提交作业后",
+          "behavior": "给出分数、评语与依据，教师可改分",
+          "enabled": true,
+          "required": true,
+          "tools": [
+            "作业读取",
+            "知识库检索"
+          ]
+        },
+        {
+          "id": "mistake",
+          "name": "错题讲解",
+          "when": "学生查看判错的题目",
+          "behavior": "按错因讲解，默认不直接给最终答案",
+          "enabled": true,
+          "required": true,
+          "tools": [
+            "作业读取",
+            "知识库检索"
+          ]
+        }
+      ],
+      "mcpServers": [
+        {
+          "id": "mcp-kb",
+          "name": "知识库检索服务",
+          "url": "mcp://campusclaw/knowledge-base",
+          "status": "connected",
+          "tools": [
+            "kb.search",
+            "kb.getChunk"
+          ],
+          "builtin": true
+        },
+        {
+          "id": "mcp-math",
+          "name": "数学计算工具",
+          "url": "mcp://tools/math-solver",
+          "status": "connected",
+          "tools": [
+            "math.solveEquation",
+            "set.operate"
+          ]
+        }
+      ]
+    }
+  ],
+  "homeworks": [
+    {
+      "id": "hw-a-chemistry-1",
+      "classId": "cls-a",
+      "subject": "化学",
+      "title": "物质的量计算",
+      "description": "计算 18 g 水(H₂O)的物质的量与所含分子数。",
+      "state": "published",
+      "dueAt": "2026-09-11 23:59"
+    },
+    {
+      "id": "hw-a-chemistry-2",
+      "classId": "cls-a",
+      "subject": "化学",
+      "title": "化学方程式配平",
+      "description": "配平 Fe + O₂ → Fe₃O₄，并说明配平依据。",
+      "state": "published",
+      "dueAt": "2026-09-12 23:59"
+    },
+    {
+      "id": "hw-a-chinese-1",
+      "classId": "cls-a",
+      "subject": "语文",
+      "title": "《劝学》重点句翻译",
+      "description": "翻译“君子生非异也，善假于物也”，并指出其中虚词的用法。",
+      "state": "published",
+      "dueAt": "2026-09-11 23:59"
+    },
+    {
+      "id": "hw-a-chinese-2",
+      "classId": "cls-a",
+      "subject": "语文",
+      "title": "记叙文阅读理解",
+      "description": "阅读一段写景文字，概括其主旨并赏析其中一处修辞。",
+      "state": "published",
+      "dueAt": "2026-09-12 23:59"
+    },
+    {
+      "id": "hw-a-english-1",
+      "classId": "cls-a",
+      "subject": "英语",
+      "title": "时态填空练习",
+      "description": "用所给动词的正确时态填空，并说明理由（至少含一句被动语态）。",
+      "state": "published",
+      "dueAt": "2026-09-12 23:59"
+    },
+    {
+      "id": "hw-a-english-2",
+      "classId": "cls-a",
+      "subject": "英语",
+      "title": "阅读理解",
+      "description": "阅读短文，完成主旨题与推理题各一，并简述解题依据。",
+      "state": "published",
+      "dueAt": "2026-09-10 23:59"
+    },
+    {
+      "id": "hw-a-math-1",
+      "classId": "cls-a",
+      "subject": "数学",
+      "title": "一元二次方程练习",
+      "description": "解方程 x²−5x+6=0，并说明所用方法与判别式。",
+      "state": "published",
+      "dueAt": "2026-09-10 23:59"
+    },
+    {
+      "id": "hw-a-math-2",
+      "classId": "cls-a",
+      "subject": "数学",
+      "title": "函数单调性判断",
+      "description": "判断 f(x)=x²−4x 在 (2, +∞) 上的单调性并给出理由。",
+      "state": "published",
+      "dueAt": "2026-09-11 23:59"
+    },
+    {
+      "id": "hw-a-physics-1",
+      "classId": "cls-a",
+      "subject": "物理",
+      "title": "运动学计算",
+      "description": "汽车以 2 m/s² 加速，初速度 4 m/s，求 5 s 后的速度与位移。",
+      "state": "published",
+      "dueAt": "2026-09-10 23:59"
+    },
+    {
+      "id": "hw-a-physics-2",
+      "classId": "cls-a",
+      "subject": "物理",
+      "title": "受力分析题",
+      "description": "画出斜面上匀速下滑木块的受力图，并说明各力之间的关系。",
+      "state": "published",
+      "dueAt": "2026-09-11 23:59"
+    },
+    {
+      "id": "hw-b-english-1",
+      "classId": "cls-b",
+      "subject": "英语",
+      "title": "时态填空练习",
+      "description": "用所给动词的正确时态填空，并说明理由（至少含一句被动语态）。",
+      "state": "published",
+      "dueAt": "2026-09-11 23:59"
+    },
+    {
+      "id": "hw-b-english-2",
+      "classId": "cls-b",
+      "subject": "英语",
+      "title": "阅读理解",
+      "description": "阅读短文，完成主旨题与推理题各一，并简述解题依据。",
+      "state": "published",
+      "dueAt": "2026-09-12 23:59"
+    },
+    {
+      "id": "hw-b-history-1",
+      "classId": "cls-b",
+      "subject": "历史",
+      "title": "秦汉制度比较",
+      "description": "比较秦朝与汉初地方行政制度的异同，并说明其影响。",
+      "state": "published",
+      "dueAt": "2026-09-12 23:59"
+    },
+    {
+      "id": "hw-b-math-1",
+      "classId": "cls-b",
+      "subject": "数学",
+      "title": "集合运算练习",
+      "description": "已知 A={1,2,3}，B={2,3,4}，求 A∩B 与 A∪B。",
+      "state": "published",
+      "dueAt": "2026-09-10 23:59"
+    }
+  ],
+  "submissions": [
+    {
+      "id": "sub-1",
+      "homeworkId": "hw-a-math-1",
+      "studentId": "u-stu-a1",
+      "studentName": "李明（A1）",
+      "content": "x²−5x+6=0，用十字相乘得 (x−2)(x−3)=0，所以 x=2 或 x=3。判别式 Δ=1>0。",
+      "submittedAt": "2026-09-05 20:10",
+      "state": "graded",
+      "aiScore": 92,
+      "aiComment": "方法正确，因式分解与判别式判断到位，可补充求根公式验证。",
+      "aiBasis": "依据《一元二次方程与求根公式》例题 1、第 2 页。",
+      "teacherScore": 95,
+      "teacherComment": "很好，过程完整，加 3 分鼓励。",
+      "overriddenAt": "2026-09-05 21:02",
+      "wrong": false
+    },
+    {
+      "id": "sub-2",
+      "homeworkId": "hw-a-math-2",
+      "studentId": "u-stu-a1",
+      "studentName": "李明（A1）",
+      "content": "f(x)=x²−4x 在 (2,+∞) 上是减函数，因为开口向上。",
+      "submittedAt": "2026-09-06 19:40",
+      "state": "graded",
+      "aiScore": 60,
+      "aiComment": "结论有误。二次函数在对称轴右侧应为增函数，需用作差法或导数验证。",
+      "aiBasis": "依据《函数的单调性》3.1、3.2 节。",
+      "wrong": true
+    }
+  ],
+  "mistakes": [
+    {
+      "id": "mis-1",
+      "studentId": "u-stu-a1",
+      "homeworkTitle": "函数单调性判断",
+      "question": "判断 f(x)=x²−4x 在 (2, +∞) 上的单调性并给出理由。",
+      "studentAnswer": "f(x)=x²−4x 在 (2,+∞) 上是减函数，因为开口向上。",
+      "reason": "把对称轴右侧误判为减函数；未用作差法或导数验证。"
+    }
+  ],
+  "auditLogs": [
+    {
+      "id": "log-seed-1",
+      "at": "2026-09-05 20:11",
+      "userId": "u-stu-a1",
+      "userName": "李明（A1）",
+      "classId": "cls-a",
+      "skillId": "grade",
+      "action": "作业批改",
+      "params": "submissionId=sub-1",
+      "status": "ok",
+      "costMs": 2400,
+      "tokens": 312
+    },
+    {
+      "id": "log-seed-2",
+      "at": "2026-09-06 19:41",
+      "userId": "u-stu-a1",
+      "userName": "李明（A1）",
+      "classId": "cls-a",
+      "skillId": "grade",
+      "action": "作业批改",
+      "params": "submissionId=sub-2",
+      "status": "ok",
+      "costMs": 2210,
+      "tokens": 298
+    }
+  ]
+}
