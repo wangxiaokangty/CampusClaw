@@ -7,7 +7,7 @@ context: |
   技术栈：
   - 前端 Next.js（App Router，TypeScript）
   - 后端 FastAPI，用 uv 管理环境与依赖
-  - ORM 用 SQLModel，数据库 SQLite（单文件，本阶段无迁移工具）
+  - ORM 用 SQLModel（同步会话），数据库 PostgreSQL；提供 SQLite 一次性迁移脚本，暂不引入版本迁移框架
   - 部署用 Docker / docker compose
 
   开发流程：接口契约先行。后端 FastAPI 自动导出的 OpenAPI 是契约的唯一真相，
