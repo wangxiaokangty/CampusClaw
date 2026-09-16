@@ -1,5 +1,28 @@
 schema: spec-driven
 
+context: |
+  CampusClaw —— 面向中学班级的智能教学平台。教师侧管理讲义、配置学科助手、批改作业、查看审计；
+  学生侧检索知识库、与助手对话、交作业、看错题与学情。
+
+  技术栈：
+  - 前端 Next.js（App Router，TypeScript）
+  - 后端 FastAPI，用 uv 管理环境与依赖
+  - ORM 用 SQLModel，数据库 SQLite（单文件，本阶段无迁移工具）
+  - 部署用 Docker / docker compose
+
+  开发流程：接口契约先行。后端 FastAPI 自动导出的 OpenAPI 是契约的唯一真相，
+  前端用 openapi-typescript 生成 types/api.d.ts，不手写任何接口类型。
+  契约冻结后前后端并行开发。
+
+  核心约束：
+  - 数据按班级（class_id）隔离，跨班访问返回 404 而非 403，不泄漏资源存在性
+  - 隔离通过依赖注入强制，不依赖各路由自行过滤
+  - SQLModel 的 table=True 模型禁止直接用作 response_model，models/ 与 schemas/ 严格分离
+  - AI 能力集中在 ai/ 模块，当前为 mock 实现但走真实传输通道（对话真 SSE、批改真异步）
+  - 教师可配置助手，学生只读；学生不可修改提示词与技能
+
+  文档与注释用中文，代码标识符用英文。
+
 # Project context (optional)
 # This is shown to AI when creating artifacts.
 # Add your tech stack, conventions, style guides, domain knowledge, etc.
